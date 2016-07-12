@@ -6,3 +6,4 @@
 - Moving car
 - Stop sign, sun, sky, and ground
 - Procedurally generated skyline (I was too lazy to add the buildings manually)
+- The buildings move!
