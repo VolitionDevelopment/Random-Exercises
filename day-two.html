@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Day Two Exercise</title>
+
+    <style>
+        .wheel{
+            height: 50px;
+            width: 50px;
+            background-color: grey;
+            border-radius: 50%;
+
+            position: absolute;
+            z-index: 2;
+        }
+
+        .inner-wheel{
+            height: 25px;
+            width: 25px;
+            background-color: black;
+            border-radius: 50%;
+
+            position: absolute;
+            z-index: 2;
+        }
+
+        .body{
+            height: 100px;
+            width: 200px;
+            border-radius: 10px;
+            background-color: blue;
+            left: 30px;
+
+            position: absolute;
+        }
+
+        .window{
+            height: 40px;
+            width: 40px;
+            border-radius: 10px;
+            background-color: lightblue;
+
+            z-index: 2;
+            position: absolute;
+        }
+
+        .sky{
+            width: 100%;
+            height: 270px;
+            background-color: lightblue;
+
+            z-index: -2;
+            position: absolute;
+        }
+
+        .road{
+            width: 100%;
+            height: 10px;
+            background-color: #222222;
+            top: 275px;
+
+            z-index: -1;
+            position: absolute;
+        }
+
+        .ground{
+            width: 100%;
+            height: 100%;
+            background-color: saddlebrown;
+
+            z-index: -4;
+            position: absolute;
+        }
+
+        .sun{
+            width: 75px;
+            height: 75px;
+            background-color: yellow;
+            border-radius: 50%;
+            left: 1700px;
+            top: 30px;
+
+            z-index: 1;
+            position: absolute;
+        }
+
+        .car{
+            position: absolute;
+            top: 150px;
+            transition: all 1s;
+        }
+
+        .building{
+            width: 80px;
+            height: 245px;
+            background-color: #111;
+            left: 30px;
+            top: 30px;
+
+            z-index: -2;
+            position: absolute;
+        }
+
+        .car:hover{
+            transform: translateX(1300px);
+        }
+
+        .pole{
+            width: 10px;
+            height: 145px;
+            background-color: #bbbbbb;
+            top: 130px;
+            left: 1545px;
+
+            position: absolute;
+            z-index: -1;
+        }
+
+        .octagon {
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+
+            z-index: -1;
+            top: 30px;
+            left: 1500px;
+        }
+
+        .octagon:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-bottom: 29px solid red;
+            border-left: 29px solid lightblue;
+            border-right: 29px solid lightblue;
+            width: 42px;
+            height: 0;
+        }
+
+        .octagon:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            border-top: 29px solid red;
+            border-left: 29px solid lightblue;
+            border-right: 29px solid lightblue;
+            width: 42px;
+            height: 0;
+        }
+
+        .stop{
+            font-family: sans-serif;
+            font-size: 28px;
+            color: white;
+            top: 65px;
+            left: 1512px;
+
+            z-index: -1;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+
+<div class="sky"></div>
+<div class="sun"></div>
+<div class="road"></div>
+<div class="ground"></div>
+<div class="octagon"></div>
+<div class="pole"></div>
+<div class="stop"><b>STOP</b></div>
+
+<div class="skyline">
+    <div class="building"></div>
+
+    <div class="building"></div>
+    <div class="building"></div>
+    <div class="building"></div>
+    <div class="building"></div>
+    <div class="building"></div>
+    <div class="building"></div>
+    <div class="building"></div>
+    <div class="building"></div>
+    <div class="building"></div>
+    <div class="building"></div>
+    <div class="building"></div>
+    <div class="building"></div>
+    <div class="building"></div>
+    <div class="building"></div>
+    <div class="building"></div>
+</div>
+
+<div class="car">
+    <div class="wheel" style="top: 80px; left: 170px;"></div>
+    <div class="wheel" style="top: 80px; left: 40px;"></div>
+    <div class="inner-wheel" style="top: 93px; left: 52px;"></div>
+    <div class="inner-wheel" style="top: 93px; left: 182px;"></div>
+    <div class="window" style="top: 20px; left: 180px;"></div>
+    <div class="body"></div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function(){
+        var previousLeft = 0;
+
+        $('.building').each(function(){
+            var left = parseInt($(this).css('left'));
+            var height = getRandomArbitrary(70, 245);
+            var top = 285 - height;
+
+            $(this).css('left', previousLeft + 85);
+            $(this).css('top', top);
+            $(this).css('height', height);
+
+            previousLeft += 85;
+        });
+    });
+
+    function getRandomArbitrary(min, max) {
+        return Math.random() * (max - min) + min;
+    }
+</script>
+
+</body>
+</html>
