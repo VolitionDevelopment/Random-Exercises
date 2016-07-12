@@ -97,9 +97,14 @@
             background-color: #111;
             left: 30px;
             top: 30px;
+            transition: all 0.5s;
 
             z-index: -2;
             position: absolute;
+        }
+
+        .building:hover{
+            background-color: #333;
         }
 
         .car:hover{
@@ -207,6 +212,16 @@
 <script src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
 <script>
     $(document).ready(function(){
+        generate();
+
+        setInterval(generate, 5000);
+    });
+
+    function getRandomArbitrary(min, max) {
+        return Math.random() * (max - min) + min;
+    }
+
+    function generate(){
         var previousLeft = 0;
 
         $('.building').each(function(){
@@ -220,10 +235,6 @@
 
             previousLeft += 85;
         });
-    });
-
-    function getRandomArbitrary(min, max) {
-        return Math.random() * (max - min) + min;
     }
 </script>
 
